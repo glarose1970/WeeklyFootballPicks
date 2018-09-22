@@ -1,6 +1,7 @@
 package com.inkedapparelonline.weeklyfootballpicks.activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,8 +18,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.inkedapparelonline.weeklyfootballpicks.R;
+import com.inkedapparelonline.weeklyfootballpicks.helpers.MatchUpHelper;
+import com.inkedapparelonline.weeklyfootballpicks.helpers.PlayerHelper;
 import com.inkedapparelonline.weeklyfootballpicks.model.Player;
+import com.inkedapparelonline.weeklyfootballpicks.model.Team;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 public class Create_User extends AppCompatActivity {
@@ -65,22 +71,16 @@ public class Create_User extends AppCompatActivity {
     }
 
     private void Handle_Save_Click() {
+
         if (!TextUtils.isEmpty(mEtUserName.getText()) && !TextUtils.isEmpty(mEtCompanyName.getText())) {
             String username = mEtUserName.getText().toString();
             String company = mEtCompanyName.getText().toString();
-            final String id = mDataRef.push().getKey();
+            final String id = PlayerHelper.Generate_Player_Id(8);
             final Player player = new Player(username, company, id);
             mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (DataSnapshot players : dataSnapshot.getChildren()) {
-                        if (players.child("id").getValue().toString().equalsIgnoreCase(id)) {
-                            Toast.makeText(Create_User.this, "Player Name already exists,\r\nPlease choose a different name",
-                                    Toast.LENGTH_LONG).show();
-                        }else {
-                            mDataRef.child(id).setValue(player);
-                        }
-                    }
+                    mDataRef.child(id).setValue(player);
                 }
 
                 @Override

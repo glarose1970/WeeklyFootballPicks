@@ -48,4 +48,15 @@ public class MatchUpHelper {
         }
         return matchupList;
     }
+
+    public static final String Get_Week() {
+        String week = "";
+        try {
+            Document page = Jsoup.connect("http://www.nfl.com/scores").get();
+            week = page.getElementsByClass("week-title").text();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return week;
+    }
 }

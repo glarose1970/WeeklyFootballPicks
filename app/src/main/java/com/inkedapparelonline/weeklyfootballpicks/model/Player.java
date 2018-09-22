@@ -36,9 +36,18 @@ public class Player {
         Picks = picks;
     }
 
-    public Player(String name, String company, int winTotal, int lossTotal, List<Team> picks) {
+    public Player(String name, String company, String id, int winTotal, int lossTotal) {
         Name = name;
         Company = company;
+        WinTotal = winTotal;
+        LossTotal = lossTotal;
+        Id = id;
+    }
+
+    public Player(String name, String company, String id, int winTotal, int lossTotal, List<Team> picks) {
+        Name = name;
+        Company = company;
+        Id = id;
         WinTotal = winTotal;
         LossTotal = lossTotal;
         Picks = picks;
