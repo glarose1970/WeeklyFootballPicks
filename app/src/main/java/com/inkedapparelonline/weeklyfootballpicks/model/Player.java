@@ -14,12 +14,20 @@ public class Player {
     private int LossTotal;
     private List<Team> Picks;
 
+    private String Id;
+
     public Player() {
     }
 
     public Player(String name, String company) {
         Name = name;
         Company = company;
+    }
+
+    public Player(String name, String company, String id) {
+        Name = name;
+        Company = company;
+        Id = id;
     }
 
     public Player(String name, String company, List<Team> picks) {
@@ -74,5 +82,13 @@ public class Player {
 
     public void setPicks(List<Team> picks) {
         Picks = picks;
+    }
+
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String id) {
+        Id = id;
     }
 }
