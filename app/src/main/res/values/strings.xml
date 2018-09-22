@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Weekly Football Picks</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="menu_title_players">Players</string>
+    <string name="title_matchups">Matchups</string>
+    <string name="title_activity_create__user">Create_User</string>
+</resources>

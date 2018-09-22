@@ -1,0 +1,152 @@
+{
+  "project_info": {
+    "project_number": "773481826834",
+    "firebase_url": "https://footballpicks-c4e30.firebaseio.com",
+    "project_id": "footballpicks-c4e30",
+    "storage_bucket": "footballpicks-c4e30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773481826834:android:aad32e97b9a18926",
+        "android_client_info": {
+          "package_name": "com.inkedapparelonline.footballpool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773481826834-vqcf428d05dcpd3tprhbcc28ulm080ko.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.inkedapparelonline.footballpool",
+            "certificate_hash": "c46f3e1415643fd216727c23e64f61a8a730f90f"
+          }
+        },
+        {
+          "client_id": "773481826834-ehfap9dibh9c2969kmk1nvsemi6gvigr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe5c6GbR0PR6iYYFJ5e8yK_hsM2-VPER4"
+        },
+        {
+          "current_key": "AIzaSyBQHdqV01WQRxczFvgJ7iwe44XbRQvxftQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773481826834-ehfap9dibh9c2969kmk1nvsemi6gvigr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773481826834:android:6940825c5403d892",
+        "android_client_info": {
+          "package_name": "com.inkedapparelonline.weeklyfootballpicks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773481826834-8ad0g5km31oh8bcqi1gcngkpo28qk01o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.inkedapparelonline.weeklyfootballpicks",
+            "certificate_hash": "c46f3e1415643fd216727c23e64f61a8a730f90f"
+          }
+        },
+        {
+          "client_id": "773481826834-ehfap9dibh9c2969kmk1nvsemi6gvigr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe5c6GbR0PR6iYYFJ5e8yK_hsM2-VPER4"
+        },
+        {
+          "current_key": "AIzaSyBQHdqV01WQRxczFvgJ7iwe44XbRQvxftQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773481826834-ehfap9dibh9c2969kmk1nvsemi6gvigr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773481826834:android:1516a24c9da0ac87",
+        "android_client_info": {
+          "package_name": "com.suncoastsoftware.footballpicks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773481826834-7kd0j6qrqbf6a0p4ap2iv4i0s86k0tnr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.suncoastsoftware.footballpicks",
+            "certificate_hash": "d58b7dbf8445ef723cacda5964991ddfc3525370"
+          }
+        },
+        {
+          "client_id": "773481826834-ehfap9dibh9c2969kmk1nvsemi6gvigr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe5c6GbR0PR6iYYFJ5e8yK_hsM2-VPER4"
+        },
+        {
+          "current_key": "AIzaSyBQHdqV01WQRxczFvgJ7iwe44XbRQvxftQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773481826834-ehfap9dibh9c2969kmk1nvsemi6gvigr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
