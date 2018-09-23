@@ -8,5 +8,7 @@
     <color name="lightGrey">#A1A1A1</color>
     <color name="darkGrey">#919191</color>
     <color name="accentYellow">#F0CA4D</color>
+    <color name="offWhite">#f2f2f2</color>
+
 
 </resources>
