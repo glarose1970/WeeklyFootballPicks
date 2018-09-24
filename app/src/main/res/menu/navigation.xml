@@ -7,7 +7,7 @@
         android:title="@string/title_home" />
     <item
         android:id="@+id/navigation_players"
-        android:icon="@drawable/ic_players"
+        android:icon="@drawable/ic_add_player"
         android:title="@string/menu_title_players" />
 
     <item

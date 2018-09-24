@@ -36,9 +36,9 @@ public class PlayerRecViewAdapter  extends RecyclerView.Adapter<PlayerRecViewAda
         holder.name.setText(playerList.get(position).getName());
         holder.company.setText(playerList.get(position).getCompany());
         String win = String.valueOf(playerList.get(position).getWinTotal());
-        holder.wins.setText(win);
+        holder.wins.setText("Wins : " + win);
         String loss = String.valueOf(playerList.get(position).getLossTotal());
-        holder.losses.setText(loss);
+        holder.losses.setText("Losses : " +  loss);
     }
 
     @Override

@@ -4,23 +4,29 @@
     xmlns:player_card="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    player_card:cardElevation="6dp"
+    player_card:cardElevation="4dp"
     player_card:cardCornerRadius="8dp"
-    android:layout_marginBottom="2dp"
-    player_card:cardBackgroundColor="@color/lightGrey">
+    android:layout_marginBottom="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginTop="4dp"
+    player_card:cardBackgroundColor="@color/offWhite">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="@drawable/gradient_background_lightgrey_darkgrey">
 
         <TextView
             android:id="@+id/player_card_tv_playername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Player Name"
+            android:textStyle="italic"
+            android:textSize="16sp"
             android:layout_margin="3dp"/>
 
         <TextView
@@ -28,6 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Company Name"
+            android:textStyle="italic"
+            android:textSize="16sp"
             android:layout_margin="3dp"/>
 
         <LinearLayout

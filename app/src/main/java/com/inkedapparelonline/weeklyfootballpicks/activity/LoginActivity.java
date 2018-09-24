@@ -52,7 +52,7 @@ public class LoginActivity extends Activity {
                 }else {
                     Toast.makeText(LoginActivity.this, "All fields required", Toast.LENGTH_LONG).show();
                 }
-               //startActivity(new Intent(LoginActivity.this, MainActivity.class));
+               startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
 
