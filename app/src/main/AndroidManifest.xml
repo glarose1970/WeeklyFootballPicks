@@ -20,7 +20,8 @@
             android:name=".activity.MainActivity"
             android:label="@string/title_activity_main" />
         <activity android:name=".activity.NewAcctActivity" />
-        <activity android:name=".activity.Create_User"></activity>
+        <activity android:name=".activity.Create_User" />
+        <activity android:name=".activity.MatchupActivity"></activity>
     </application>
 
 </manifest>

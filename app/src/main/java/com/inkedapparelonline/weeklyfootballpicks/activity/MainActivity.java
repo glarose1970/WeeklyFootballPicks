@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference mDataRef;
     RecyclerView mainRecView;
     PlayerRecViewAdapter playerAdapter;
-    List<Player> playerList;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
                     return true;
                 case R.id.navigation_matchups:
-
+                    startActivity(new Intent(MainActivity.this, MatchupActivity.class));
                     return true;
                 case R.id.navigation_players:
 
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        playerList = new ArrayList<>();
         mAuth = FirebaseAuth.getInstance();
         mData = FirebaseDatabase.getInstance();
         mDataRef = mData.getReference("players");
@@ -109,16 +107,11 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-       // new Load_Players().execute();
     }
-
-
 
     @Override
     protected void onStart() {
         super.onStart();
-
-
     }
     private List<Player> loadPlayers() {
         final List<Player> pList = new ArrayList<>();

@@ -25,7 +25,7 @@ public class MatchUpHelper {
                 //Away Team Data
                 String awayTeamRecord = awayTeamNode.get(i).getElementsByClass("team-record").text();
                 String awayTeamName = awayTeamNode.get(i).getElementsByClass("team-name").text();
-                int awayTeamScore = Integer.parseInt(awayTeamNode.get(i).getElementsByClass("total-score").text());
+                String awayTeamScore = awayTeamNode.get(i).getElementsByClass("total-score").text();
                 String awayTeamLogoUrl = awayTeamNode.get(i).getElementsByClass("team-logo").select("img").attr("src");
                 String awayTeamAbrDetails = awayTeamNode.get(i).select("a").attr("href");
                 int awayTeamAbrIndex = awayTeamAbrDetails.lastIndexOf('=');
@@ -34,7 +34,7 @@ public class MatchUpHelper {
                 //Home Team Data
                 String homeTeamRecord = homeTeamNode.get(i).getElementsByClass("team-record").text();
                 String homeTeamName = homeTeamNode.get(i).getElementsByClass("team-name").text();
-                int homeTeamScore = Integer.parseInt(homeTeamNode.get(i).getElementsByClass("total-score").text());
+                String homeTeamScore = homeTeamNode.get(i).getElementsByClass("total-score").text();
                 String homeTeamLogoUrl = homeTeamNode.get(i).getElementsByClass("team-logo").select("img").attr("src");
                 String homeTeamAbrDetails = homeTeamNode.get(i).select("a").attr("href");
                 int homeTeamAbrIndex = homeTeamAbrDetails.lastIndexOf('=');

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:padding="10dp"
-        android:background="@drawable/gradient_background_lightgrey_darkgrey">
+        android:background="@drawable/gradient_background_lighttan_darktan">
 
         <LinearLayout
             android:id="@+id/single_matchup_awayTeam_container"

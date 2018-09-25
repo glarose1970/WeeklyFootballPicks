@@ -6,7 +6,7 @@ public class Team {
     private String Abr;
     private String Record;
     private String ImgLocation;
-    private int Score;
+    private String Score;
 
     public Team() {
     }
@@ -16,20 +16,20 @@ public class Team {
         ImgLocation = imgLocation;
     }
 
-    public Team(String name, String record, int score) {
+    public Team(String name, String record, String score) {
         Name = name;
         Record = record;
         Score = score;
     }
 
-    public Team(String name, String record, String imgLocation, int score) {
+    public Team(String name, String record, String imgLocation, String score) {
         Name = name;
         Record = record;
         ImgLocation = imgLocation;
         Score = score;
     }
 
-    public Team(String name, String abr, String record, String imgLocation, int score) {
+    public Team(String name, String abr, String record, String imgLocation, String score) {
         Name = name;
         Abr = abr;
         Record = record;
@@ -37,11 +37,11 @@ public class Team {
         Score = score;
     }
 
-    public int getScore() {
+    public String getScore() {
         return Score;
     }
 
-    public void setScore(int score) {
+    public void setScore(String score) {
         Score = score;
     }
 

@@ -44,11 +44,11 @@ public class LoginActivity extends Activity {
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Load_Matchups().execute();
+               // new Load_Matchups().execute();
                 String email = et_Email.getText().toString();
                 String password = et_Password.getText().toString();
                 if (email.length() > 0 && password.length() > 0) {
-                    signIn(email, password);
+                   // signIn(email, password);
                 }else {
                     Toast.makeText(LoginActivity.this, "All fields required", Toast.LENGTH_LONG).show();
                 }
@@ -80,8 +80,9 @@ public class LoginActivity extends Activity {
         currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
+           Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+           startActivity(intent);
+            // mAuth.signOut();
         }
 
     }
@@ -95,6 +96,9 @@ public class LoginActivity extends Activity {
                             if (task.isSuccessful()) {
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
+                            }else {
+                                Toast.makeText(LoginActivity.this, "Email or Password incorrect,\r\nPlease try again!", Toast.LENGTH_LONG).show();
+                                et_Email.requestFocus();
                             }
                         }
                     });
