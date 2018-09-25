@@ -18,25 +18,35 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:background="@drawable/gradient_background_lightgrey_darkgrey">
+        android:background="@drawable/gradient_background_lighttan_darktan">
 
-        <TextView
-            android:id="@+id/player_card_tv_playername"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Player Name"
-            android:textStyle="italic"
-            android:textSize="16sp"
-            android:layout_margin="3dp"/>
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/player_card_tv_companyrname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Company Name"
-            android:textStyle="italic"
-            android:textSize="16sp"
-            android:layout_margin="3dp"/>
+
+            <TextView
+                android:id="@+id/player_card_tv_playername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Player Name"
+                android:textColor="@color/signIn_lightGreen"
+                android:textStyle="italic"
+                android:textSize="18sp"
+                android:layout_margin="3dp"/>
+
+            <TextView
+                android:id="@+id/player_card_tv_companyrname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Company Name"
+                android:textColor="@color/signIn_lightGreen"
+                android:textStyle="italic"
+                android:textSize="18sp"
+                android:layout_margin="3dp"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
@@ -49,12 +59,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wins : "
+                android:textColor="@color/text_dark_tan"
                 android:layout_margin="4dp"/>
             <TextView
                 android:id="@+id/player_single_row_tvLosses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Losses :"
+                android:textColor="@color/text_dark_tan"
                 android:layout_margin="4dp"/>
 
         </LinearLayout>

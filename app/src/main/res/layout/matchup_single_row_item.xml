@@ -47,6 +47,7 @@
                     android:id="@+id/matchup_single_row_item_tvAwayTeamName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
                     android:text="Team Name"/>
 
 
@@ -100,6 +101,7 @@
                     android:id="@+id/matchup_single_row_item_tvHomeTeamName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="18sp"
                     android:text="Team Name"/>
 
 

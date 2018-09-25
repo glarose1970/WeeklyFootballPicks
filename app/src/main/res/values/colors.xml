@@ -11,6 +11,7 @@
     <color name="offWhite">#f2f2f2</color>
     <color name="lightTan">#fad799</color>
     <color name="darkTan">#c2a777</color>
-
-
+    <color name="text_dark_tan">#775d2f</color>
+    <color name="background_darkTan">#775b2f</color>
+    <color name="signIn_lightGreen">#46B29D</color>
 </resources>

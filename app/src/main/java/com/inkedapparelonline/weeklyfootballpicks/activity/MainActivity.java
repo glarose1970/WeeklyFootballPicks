@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
     }
+
     private List<Player> loadPlayers() {
         final List<Player> pList = new ArrayList<>();
 

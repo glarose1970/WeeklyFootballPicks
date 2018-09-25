@@ -33,7 +33,7 @@ public class PlayerRecViewAdapter  extends RecyclerView.Adapter<PlayerRecViewAda
     @Override
     public void onBindViewHolder(@NonNull PlayerViewHolder holder, int position) {
 
-        holder.name.setText(playerList.get(position).getName());
+        holder.name.setText(playerList.get(position).getName() + " -");
         holder.company.setText(playerList.get(position).getCompany());
         String win = String.valueOf(playerList.get(position).getWinTotal());
         holder.wins.setText("Wins : " + win);

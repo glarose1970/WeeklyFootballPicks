@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.flags.impl.DataUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -44,15 +46,15 @@ public class LoginActivity extends Activity {
         btn_SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // new Load_Matchups().execute();
-                String email = et_Email.getText().toString();
+                String email = et_Email.getText().toString().trim();
                 String password = et_Password.getText().toString();
-                if (email.length() > 0 && password.length() > 0) {
-                   // signIn(email, password);
+                if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+                    signIn(email, password);
                 }else {
                     Toast.makeText(LoginActivity.this, "All fields required", Toast.LENGTH_LONG).show();
+                    et_Email.requestFocus();
                 }
-               startActivity(new Intent(LoginActivity.this, MainActivity.class));
+              // startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         });
 
@@ -97,34 +99,11 @@ public class LoginActivity extends Activity {
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                             }else {
-                                Toast.makeText(LoginActivity.this, "Email or Password incorrect,\r\nPlease try again!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, task.getException().toString(), Toast.LENGTH_LONG).show();
                                 et_Email.requestFocus();
                             }
                         }
                     });
 
-    }
-
-    public class Load_Matchups extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            MatchUpHelper.Load_Matchups("2");
-            return null;
-        }
     }
 }
