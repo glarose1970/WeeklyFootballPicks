@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, MainActivity.class));
                     return true;
                 case R.id.navigation_picks:
-
+                    startActivity(new Intent(MainActivity.this, Player_Picks_Activity.class));
                     return true;
                 case R.id.navigation_matchups:
                     startActivity(new Intent(MainActivity.this, MatchupActivity.class));
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, Create_User.class));
                     return true;
                 case R.id.navigation_settings:
-
+                    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                     return true;
             }
             return false;

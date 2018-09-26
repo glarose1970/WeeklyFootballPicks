@@ -22,7 +22,8 @@
         <activity android:name=".activity.NewAcctActivity" />
         <activity android:name=".activity.Create_User" />
         <activity android:name=".activity.MatchupActivity" />
-        <activity android:name=".activity.Player_Picks_Activity"></activity>
+        <activity android:name=".activity.Player_Picks_Activity" />
+        <activity android:name=".activity.SettingsActivity"></activity>
     </application>
 
 </manifest>

@@ -61,6 +61,7 @@ public class Create_User extends AppCompatActivity {
                     startActivity(new Intent(Create_User.this, MainActivity.class));
                     return true;
                 case R.id.navigation_picks:
+                    startActivity(new Intent(Create_User.this, Player_Picks_Activity.class));
 
                     return true;
                 case R.id.navigation_matchups:
@@ -70,6 +71,7 @@ public class Create_User extends AppCompatActivity {
                     //startActivity(new Intent(Create_User.this, Create_User.class));
                     return true;
                 case R.id.navigation_settings:
+                    startActivity(new Intent(Create_User.this, SettingsActivity.class));
 
                     return true;
             }

@@ -21,7 +21,7 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="6dp"
             android:gravity="center">
 
         <android.support.v7.widget.AppCompatCheckBox
@@ -38,10 +38,10 @@
 
             <ImageView
                 android:id="@+id/player_picks_iv_away_team_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="53dp"
                 android:src="@drawable/ic_add_player"
-                android:layout_margin="10dp"
+                android:layout_margin="4dp"
                 android:contentDescription="away team logo"/>
 
                 <TextView
@@ -59,20 +59,21 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_margin="6dp"
             android:gravity="center">
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
             <ImageView
                 android:id="@+id/player_picks_iv_home_team_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="53dp"
                 android:src="@drawable/ic_add_player"
-                android:layout_margin="10dp"
+                android:layout_margin="4dp"
                 android:contentDescription="ho,e team logo"/>
 
                 <TextView

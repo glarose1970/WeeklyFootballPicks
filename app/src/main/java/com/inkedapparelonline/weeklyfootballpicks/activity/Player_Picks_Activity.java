@@ -50,7 +50,7 @@ public class Player_Picks_Activity extends AppCompatActivity {
                     startActivity(new Intent(Player_Picks_Activity.this, Create_User.class));
                     return true;
                 case R.id.navigation_settings:
-
+                    startActivity(new Intent(Player_Picks_Activity.this, SettingsActivity.class));
                     return true;
             }
             return false;

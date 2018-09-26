@@ -11,4 +11,6 @@
     <string name="create_new_user_btncancel">Cancel</string>
     <string name="create_new_user_create_user_lbl">Create User</string>
     <string name="menu_title_picks">Picks</string>
+    <string name="settings_title_lbl">Settings</string>
+    <string name="settings_btn_sign_out">Sign Out</string>
 </resources>

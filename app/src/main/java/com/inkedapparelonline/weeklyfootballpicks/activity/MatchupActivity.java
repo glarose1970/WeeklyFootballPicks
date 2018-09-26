@@ -45,6 +45,7 @@ public class MatchupActivity extends AppCompatActivity {
                     startActivity((new Intent(MatchupActivity.this, MainActivity.class)));
                     return true;
                 case R.id.navigation_picks:
+                    startActivity(new Intent(MatchupActivity.this, Player_Picks_Activity.class));
 
                     return true;
                 case R.id.navigation_matchups:
@@ -54,6 +55,7 @@ public class MatchupActivity extends AppCompatActivity {
                     startActivity(new Intent(MatchupActivity.this, Create_User.class));
                     return true;
                 case R.id.navigation_settings:
+                    startActivity(new Intent(MatchupActivity.this, SettingsActivity.class));
 
                     return true;
 
