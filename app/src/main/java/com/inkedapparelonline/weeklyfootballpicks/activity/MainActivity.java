@@ -45,12 +45,18 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    startActivity(new Intent(MainActivity.this, MainActivity.class));
+                    return true;
+                case R.id.navigation_picks:
 
                     return true;
                 case R.id.navigation_matchups:
                     startActivity(new Intent(MainActivity.this, MatchupActivity.class));
                     return true;
                 case R.id.navigation_players:
+                    startActivity(new Intent(MainActivity.this, Create_User.class));
+                    return true;
+                case R.id.navigation_settings:
 
                     return true;
             }

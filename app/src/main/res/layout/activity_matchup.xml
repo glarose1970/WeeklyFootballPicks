@@ -38,7 +38,8 @@
             android:id="@+id/matchup_activity_recView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="12dp">
+            android:padding="12dp"
+            tools:listitem="@layout/matchup_single_row_item">
 
         </android.support.v7.widget.RecyclerView>
 

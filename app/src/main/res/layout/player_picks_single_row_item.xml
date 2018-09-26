@@ -6,25 +6,35 @@
     android:layout_height="wrap_content"
     pick_card:cardCornerRadius="6dp"
     pick_card:cardElevation="8dp"
+    android:layout_marginStart="6dp"
+    android:layout_marginEnd="6dp"
     pick_card:cardBackgroundColor="@color/offWhite">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:background="@drawable/gradient_background_lighttan_darktan">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:gravity="center">
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/player_picks_away_team_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
             <ImageView
                 android:id="@+id/player_picks_iv_away_team_logo"
@@ -34,12 +44,28 @@
                 android:layout_margin="10dp"
                 android:contentDescription="away team logo"/>
 
+                <TextView
+                    android:id="@+id/player_picks_tv_away_team_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="away team"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
         </LinearLayout>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:gravity="center">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/player_picks_iv_home_team_logo"
@@ -48,6 +74,16 @@
                 android:src="@drawable/ic_add_player"
                 android:layout_margin="10dp"
                 android:contentDescription="ho,e team logo"/>
+
+                <TextView
+                    android:id="@+id/player_picks_tv_home_team_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="home team"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
 
             <android.support.v7.widget.AppCompatCheckBox
                 android:id="@+id/player_picks_home_team_checkbox"

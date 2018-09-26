@@ -21,7 +21,8 @@
             android:label="@string/title_activity_main" />
         <activity android:name=".activity.NewAcctActivity" />
         <activity android:name=".activity.Create_User" />
-        <activity android:name=".activity.MatchupActivity"></activity>
+        <activity android:name=".activity.MatchupActivity" />
+        <activity android:name=".activity.Player_Picks_Activity"></activity>
     </application>
 
 </manifest>

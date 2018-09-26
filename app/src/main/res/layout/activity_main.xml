@@ -18,7 +18,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/mainActivity_recView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/player_single_row_item">
 
         </android.support.v7.widget.RecyclerView>
 

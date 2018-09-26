@@ -42,14 +42,24 @@ public class MatchupActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    startActivity((new Intent(MatchupActivity.this, MainActivity.class)));
+                    return true;
+                case R.id.navigation_picks:
 
                     return true;
                 case R.id.navigation_matchups:
 
                     return true;
                 case R.id.navigation_players:
+                    startActivity(new Intent(MatchupActivity.this, Create_User.class));
+                    return true;
+                case R.id.navigation_settings:
 
                     return true;
+
+                    //TODO: add new menu items for "settings" activity.
+                    //TODO: add new menu items for "player picks" activity.
+
             }
             return false;
         }

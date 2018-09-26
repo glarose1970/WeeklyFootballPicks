@@ -3,9 +3,11 @@ package com.inkedapparelonline.weeklyfootballpicks.activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +51,32 @@ public class Create_User extends AppCompatActivity {
         }
     };
 
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    startActivity(new Intent(Create_User.this, MainActivity.class));
+                    return true;
+                case R.id.navigation_picks:
+
+                    return true;
+                case R.id.navigation_matchups:
+                    startActivity(new Intent(Create_User.this, MatchupActivity.class));
+                    return true;
+                case R.id.navigation_players:
+                    //startActivity(new Intent(Create_User.this, Create_User.class));
+                    return true;
+                case R.id.navigation_settings:
+
+                    return true;
+            }
+            return false;
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,12 +86,16 @@ public class Create_User extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance();
         mDataRef = mData.getReference("players");
 
-        mEtUserName = findViewById(R.id.create_user_et_username);
-        mEtCompanyName = findViewById(R.id.create_user_et_company_name);
-        mBtnSave       = findViewById(R.id.create_user_btnSave);
+        mEtUserName = findViewById(R.id.create_new_user_et_username);
+        mEtCompanyName = findViewById(R.id.create_new_user_et_company_name);
+        mBtnSave       = findViewById(R.id.create_new_user_btn_create);
         mBtnSave.setOnClickListener(mBtnSaveOnClickListener);
-        mBtnCancel     = findViewById(R.id.create_user_btnCancel);
+        mBtnCancel     = findViewById(R.id.create_new_user_btn_cancel);
         mBtnCancel.setOnClickListener(mBtnCancelOnClickListener);
+
+
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     private void Handle_Cancel_Click() {

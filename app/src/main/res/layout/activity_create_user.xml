@@ -1,59 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.inkedapparelonline.weeklyfootballpicks.activity.Create_User">
+    tools:context=".activity.LoginActivity">
 
     <LinearLayout
         android:orientation="vertical"
+        android:id="@+id/create_user_linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:layout_height="800dp"
+        android:background="@drawable/signin_background_gradient_top"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/create_user_et_username"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Username"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/create_user_et_company_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Company Name"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="10dp">
-
-            <Button
-                android:id="@+id/create_user_btnSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save"/>
-            <Button
-                android:id="@+id/create_user_btnCancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cancel"/>
-
-        </LinearLayout>
+            android:text="@string/create_new_user_create_user_lbl"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:textStyle="italic"
+            android:textSize="24dp"
+            android:textColor="@color/accentYellow"/>
 
     </LinearLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/signin_background_gradient_bottom"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/create_user_linearLayout">
+
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardView_create_user_Panel"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        card_view:cardElevation="8dp"
+        card_view:cardCornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/create_user_linearLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="@drawable/gradient_background_lighttan_darktan">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please create new user !"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/signIn_Top_Gradient_StartColor"
+                android:layout_marginBottom="20dp"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/create_new_user_et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="UserName" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/create_new_user_et_company_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:hint="Company" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/create_new_user_btn_create"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_new_user_btncreate"
+                    android:textColor="@color/signIn_Top_Gradient_StartColor" />
+
+                <Button
+                    android:id="@+id/create_new_user_btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/create_new_user_btncancel"
+                    android:textColor="@color/signIn_Top_Gradient_StartColor" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation" />
+
+</android.support.constraint.ConstraintLayout>
