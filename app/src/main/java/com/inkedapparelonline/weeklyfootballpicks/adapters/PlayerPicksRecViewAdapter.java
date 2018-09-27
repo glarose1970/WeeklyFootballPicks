@@ -38,20 +38,7 @@ public class PlayerPicksRecViewAdapter extends RecyclerView.Adapter<PlayerPicksR
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlayerPicksRecViewAdapter.ViewHolder holder, int position) {
-
-        holder.checkBox_awayTeam.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
-        holder.checkBox_homeTeam.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        });
+    public void onBindViewHolder(@NonNull final PlayerPicksRecViewAdapter.ViewHolder holder, int position) {
 
         Picasso.get().load(matchupList.get(position).getAwayTeam().getImgLocation()).into(holder.iv_awayTeamLogo);
         Picasso.get().load(matchupList.get(position).getHomeTeam().getImgLocation()).into(holder.iv_homeTeamLogo);
@@ -83,5 +70,6 @@ public class PlayerPicksRecViewAdapter extends RecyclerView.Adapter<PlayerPicksR
             tv_homeTeamName   = itemView.findViewById(R.id.player_picks_tv_home_team_name);
 
         }
+
     }
 }

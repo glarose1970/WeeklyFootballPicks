@@ -8,13 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.inkedapparelonline.weeklyfootballpicks.R;
 import com.inkedapparelonline.weeklyfootballpicks.adapters.PlayerPicksRecViewAdapter;
+import com.inkedapparelonline.weeklyfootballpicks.helpers.BottomNavigationViewHelper;
 import com.inkedapparelonline.weeklyfootballpicks.helpers.MatchUpHelper;
 import com.inkedapparelonline.weeklyfootballpicks.model.MatchUp;
 import com.inkedapparelonline.weeklyfootballpicks.model.Team;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,48 +30,32 @@ import java.util.List;
 
 public class Player_Picks_Activity extends AppCompatActivity {
 
+    private static final int ACTIVITY_NUM = 1;
     RecyclerView recView;
     RecyclerView.LayoutManager layoutManager;
     PlayerPicksRecViewAdapter playerPicksAdapter;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    startActivity(new Intent(Player_Picks_Activity.this, MainActivity.class));
-                    return true;
-                case R.id.navigation_picks:
-
-                    return true;
-                case R.id.navigation_matchups:
-                    startActivity(new Intent(Player_Picks_Activity.this, MatchupActivity.class));
-                    return true;
-                case R.id.navigation_players:
-                    startActivity(new Intent(Player_Picks_Activity.this, Create_User.class));
-                    return true;
-                case R.id.navigation_settings:
-                    startActivity(new Intent(Player_Picks_Activity.this, SettingsActivity.class));
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_picks);
 
+        setUpBottonNavView();
+
         recView = findViewById(R.id.player_picks_recView);
         layoutManager = new LinearLayoutManager(this);
 
         new Load_Matchup_Picks().execute("http://www.nfl.com/scores");
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private void setUpBottonNavView() {
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavView);
+        BottomNavigationViewHelper.setUpBottomNavView(bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(Player_Picks_Activity.this, bottomNavigationViewEx);
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
     }
 
     public class Load_Matchup_Picks extends AsyncTask<String, Void, List<MatchUp>> {

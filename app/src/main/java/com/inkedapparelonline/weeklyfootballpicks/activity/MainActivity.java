@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -21,15 +22,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.inkedapparelonline.weeklyfootballpicks.R;
 import com.inkedapparelonline.weeklyfootballpicks.adapters.PlayerRecViewAdapter;
+import com.inkedapparelonline.weeklyfootballpicks.helpers.BottomNavigationViewHelper;
 import com.inkedapparelonline.weeklyfootballpicks.helpers.MatchUpHelper;
 import com.inkedapparelonline.weeklyfootballpicks.model.MatchUp;
 import com.inkedapparelonline.weeklyfootballpicks.model.Player;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int ACTIVITY_NUM = 0;
     private FirebaseAuth mAuth;
     private FloatingActionButton fab;
 
@@ -37,32 +41,6 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference mDataRef;
     RecyclerView mainRecView;
     PlayerRecViewAdapter playerAdapter;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    startActivity(new Intent(MainActivity.this, MainActivity.class));
-                    return true;
-                case R.id.navigation_picks:
-                    startActivity(new Intent(MainActivity.this, Player_Picks_Activity.class));
-                    return true;
-                case R.id.navigation_matchups:
-                    startActivity(new Intent(MainActivity.this, MatchupActivity.class));
-                    return true;
-                case R.id.navigation_players:
-                    startActivity(new Intent(MainActivity.this, Create_User.class));
-                    return true;
-                case R.id.navigation_settings:
-                    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                    return true;
-            }
-            return false;
-        }
-    };
 
     private FloatingActionButton.OnClickListener mOnClickListener = (new View.OnClickListener() {
         @Override
@@ -76,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setUpBottonNavView();
 
         mAuth = FirebaseAuth.getInstance();
         mData = FirebaseDatabase.getInstance();
@@ -110,9 +90,15 @@ public class MainActivity extends AppCompatActivity {
         fab = findViewById(R.id.main_activity_fab);
         fab.setOnClickListener(mOnClickListener);
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
 
+    private void setUpBottonNavView() {
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavView);
+        BottomNavigationViewHelper.setUpBottomNavView(bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(MainActivity.this, bottomNavigationViewEx);
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
     }
 
     @Override

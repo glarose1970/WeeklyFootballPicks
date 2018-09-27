@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,8 +17,10 @@ import android.widget.Spinner;
 
 import com.inkedapparelonline.weeklyfootballpicks.R;
 import com.inkedapparelonline.weeklyfootballpicks.adapters.MatchUpRecViewAdapter;
+import com.inkedapparelonline.weeklyfootballpicks.helpers.BottomNavigationViewHelper;
 import com.inkedapparelonline.weeklyfootballpicks.model.MatchUp;
 import com.inkedapparelonline.weeklyfootballpicks.model.Team;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -30,46 +33,18 @@ import java.util.List;
 
 public class MatchupActivity extends AppCompatActivity {
 
+    private static final int ACTIVITY_NUM = 2;
     Spinner weekSpinner;
     RecyclerView recView;
     MatchUpRecViewAdapter adapter;
     RecyclerView.LayoutManager layoutManager;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    startActivity((new Intent(MatchupActivity.this, MainActivity.class)));
-                    return true;
-                case R.id.navigation_picks:
-                    startActivity(new Intent(MatchupActivity.this, Player_Picks_Activity.class));
-
-                    return true;
-                case R.id.navigation_matchups:
-
-                    return true;
-                case R.id.navigation_players:
-                    startActivity(new Intent(MatchupActivity.this, Create_User.class));
-                    return true;
-                case R.id.navigation_settings:
-                    startActivity(new Intent(MatchupActivity.this, SettingsActivity.class));
-
-                    return true;
-
-                    //TODO: add new menu items for "settings" activity.
-                    //TODO: add new menu items for "player picks" activity.
-
-            }
-            return false;
-        }
-    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matchup);
+
+        setUpBottonNavView();
 
         weekSpinner = findViewById(R.id.matchup_activity_weekSpinner);
         recView = findViewById(R.id.matchup_activity_recView);
@@ -90,9 +65,15 @@ public class MatchupActivity extends AppCompatActivity {
             }
         });
 
+    }
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    private void setUpBottonNavView() {
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavView);
+        BottomNavigationViewHelper.setUpBottomNavView(bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(MatchupActivity.this, bottomNavigationViewEx);
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
     }
 
     public class Load_Week_Matchups extends AsyncTask<String, Void, List<MatchUp>> {

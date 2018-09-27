@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,44 +14,23 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.inkedapparelonline.weeklyfootballpicks.R;
+import com.inkedapparelonline.weeklyfootballpicks.helpers.BottomNavigationViewHelper;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    private static final int ACTIVITY_NUM = 4;
     Button btn_signOut;
     FirebaseAuth mAuth;
     FirebaseUser curUser;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    startActivity(new Intent(SettingsActivity.this, MainActivity.class));
-                    return true;
-                case R.id.navigation_picks:
-                    startActivity(new Intent(SettingsActivity.this, Player_Picks_Activity.class));
-
-                    return true;
-                case R.id.navigation_matchups:
-                    startActivity(new Intent(SettingsActivity.this, MatchupActivity.class));
-                    return true;
-                case R.id.navigation_players:
-                    startActivity(new Intent(SettingsActivity.this, Create_User.class));
-                    return true;
-                case R.id.navigation_settings:
-                    return true;
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        setUpBottonNavView();
+        setUpBottonNavView();
         mAuth = FirebaseAuth.getInstance();
         curUser = mAuth.getCurrentUser();
 
@@ -66,7 +46,14 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    private void setUpBottonNavView() {
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavView);
+        BottomNavigationViewHelper.setUpBottomNavView(bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(SettingsActivity.this, bottomNavigationViewEx);
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
     }
 }

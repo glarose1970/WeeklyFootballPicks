@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -20,10 +21,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.inkedapparelonline.weeklyfootballpicks.R;
+import com.inkedapparelonline.weeklyfootballpicks.helpers.BottomNavigationViewHelper;
 import com.inkedapparelonline.weeklyfootballpicks.helpers.MatchUpHelper;
 import com.inkedapparelonline.weeklyfootballpicks.helpers.PlayerHelper;
 import com.inkedapparelonline.weeklyfootballpicks.model.Player;
 import com.inkedapparelonline.weeklyfootballpicks.model.Team;
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +34,7 @@ import java.util.Observable;
 
 public class Create_User extends AppCompatActivity {
 
+    private static final int ACTIVITY_NUM = 3;
     private EditText mEtUserName, mEtCompanyName;
     private Button mBtnSave, mBtnCancel;
 
@@ -51,40 +55,12 @@ public class Create_User extends AppCompatActivity {
         }
     };
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    startActivity(new Intent(Create_User.this, MainActivity.class));
-                    return true;
-                case R.id.navigation_picks:
-                    startActivity(new Intent(Create_User.this, Player_Picks_Activity.class));
-
-                    return true;
-                case R.id.navigation_matchups:
-                    startActivity(new Intent(Create_User.this, MatchupActivity.class));
-                    return true;
-                case R.id.navigation_players:
-                    //startActivity(new Intent(Create_User.this, Create_User.class));
-                    return true;
-                case R.id.navigation_settings:
-                    startActivity(new Intent(Create_User.this, SettingsActivity.class));
-
-                    return true;
-            }
-            return false;
-        }
-    };
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_user);
 
+        setUpBottonNavView();
         mData = FirebaseDatabase.getInstance();
         mDataRef = mData.getReference("players");
 
@@ -96,8 +72,16 @@ public class Create_User extends AppCompatActivity {
         mBtnCancel.setOnClickListener(mBtnCancelOnClickListener);
 
 
-        BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+
+    private void setUpBottonNavView() {
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavView);
+        BottomNavigationViewHelper.setUpBottomNavView(bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(Create_User.this, bottomNavigationViewEx);
+        Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
     }
 
     private void Handle_Cancel_Click() {
