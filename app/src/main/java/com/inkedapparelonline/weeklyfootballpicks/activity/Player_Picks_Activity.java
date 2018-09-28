@@ -10,11 +10,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.inkedapparelonline.weeklyfootballpicks.R;
 import com.inkedapparelonline.weeklyfootballpicks.adapters.PlayerPicksRecViewAdapter;
 import com.inkedapparelonline.weeklyfootballpicks.helpers.BottomNavigationViewHelper;
 import com.inkedapparelonline.weeklyfootballpicks.helpers.MatchUpHelper;
+import com.inkedapparelonline.weeklyfootballpicks.helpers.PlayerPicksHelper;
 import com.inkedapparelonline.weeklyfootballpicks.model.MatchUp;
 import com.inkedapparelonline.weeklyfootballpicks.model.Team;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -34,11 +37,12 @@ public class Player_Picks_Activity extends AppCompatActivity {
     RecyclerView recView;
     RecyclerView.LayoutManager layoutManager;
     PlayerPicksRecViewAdapter playerPicksAdapter;
-
+    TextView tv_wins;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_picks);
+        tv_wins = findViewById(R.id.player_picks_tv_wins);
 
         setUpBottonNavView();
 
@@ -60,9 +64,11 @@ public class Player_Picks_Activity extends AppCompatActivity {
 
     public class Load_Matchup_Picks extends AsyncTask<String, Void, List<MatchUp>> {
 
+        boolean isGood = false;
         @Override
         protected List<MatchUp> doInBackground(String... strings) {
             List<MatchUp> mList = new ArrayList<>();
+
             try {
                 Document page = Jsoup.connect(strings[0]).get();
                 Elements matchupNodes = page.getElementsByClass("new-score-box");

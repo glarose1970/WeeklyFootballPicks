@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,6 +35,8 @@ import java.util.Observable;
 
 public class Create_User extends AppCompatActivity {
 
+    private static final String TAG = "Create_User";
+
     private static final int ACTIVITY_NUM = 3;
     private EditText mEtUserName, mEtCompanyName;
     private Button mBtnSave, mBtnCancel;
@@ -44,7 +47,7 @@ public class Create_User extends AppCompatActivity {
     private Button.OnClickListener mBtnSaveOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Handle_Save_Click();
+            Handle_Save_Click(mEtUserName.getText().toString(), mEtCompanyName.getText().toString());
         }
     };
 
@@ -71,9 +74,7 @@ public class Create_User extends AppCompatActivity {
         mBtnCancel     = findViewById(R.id.create_new_user_btn_cancel);
         mBtnCancel.setOnClickListener(mBtnCancelOnClickListener);
 
-
     }
-
 
     private void setUpBottonNavView() {
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavView);
@@ -88,19 +89,26 @@ public class Create_User extends AppCompatActivity {
         startActivity(new Intent(Create_User.this, MainActivity.class));
     }
 
-    private void Handle_Save_Click() {
+    private void Handle_Save_Click(final String str_user_name, final String str_company) {
 
         if (!TextUtils.isEmpty(mEtUserName.getText()) && !TextUtils.isEmpty(mEtCompanyName.getText())) {
-            String username = mEtUserName.getText().toString();
-            String company = mEtCompanyName.getText().toString();
-            final String id = PlayerHelper.Generate_Player_Id(8);
-            final Player player = new Player(username, company, id);
+
             mDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    mDataRef.child(id).setValue(player);
-                }
 
+                    if (UserExist(dataSnapshot, str_user_name, str_company)) {
+                        Toast.makeText(Create_User.this, "Username Already Exists\r\nChange Player Name or Company!", Toast.LENGTH_SHORT).show();
+                        mEtUserName.requestFocus();
+                    }else {
+                        String id = PlayerHelper.Generate_Player_Id(8);
+                        Player player = new Player(str_user_name, str_company, id);
+                        mDataRef.child(id).setValue(player);
+                        mEtUserName.setText("");
+                        mEtCompanyName.setText("");
+                    }
+
+                }
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -111,5 +119,22 @@ public class Create_User extends AppCompatActivity {
             Toast.makeText(Create_User.this, "All fields required!", Toast.LENGTH_LONG).show();
             mEtUserName.requestFocus();
         }
+    }
+
+    private boolean UserExist(DataSnapshot data, String username, String company) {
+
+        Player player = new Player();
+
+        for (DataSnapshot user : data.getChildren()) {
+            Log.d(TAG, "UserExist: " + data.getValue(Player.class).getName());
+
+            player.setName(user.getValue(Player.class).getName().toLowerCase());
+            player.setCompany(user.getValue(Player.class).getCompany());
+
+            if (player.getName().equalsIgnoreCase(username) && player.getCompany().equalsIgnoreCase(company)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -6,8 +6,9 @@
     android:layout_height="wrap_content"
     pick_card:cardCornerRadius="6dp"
     pick_card:cardElevation="8dp"
-    android:layout_marginStart="6dp"
-    android:layout_marginEnd="6dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginBottom="6dp"
     pick_card:cardBackgroundColor="@color/offWhite">
 
     <LinearLayout

@@ -13,12 +13,14 @@
         android:id="@+id/mainActivity_layoutContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="4dp"
         android:layout_above="@+id/bottomNavView">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/mainActivity_recView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="54dp"
             tools:listitem="@layout/player_single_row_item">
 
         </android.support.v7.widget.RecyclerView>
@@ -33,7 +35,7 @@
         android:layout_alignBottom="@id/mainActivity_layoutContainer"
         android:src="@drawable/ic_add_player"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="55dp"/>
+        android:layout_marginBottom="60dp"/>
 
     <include layout="@layout/bottom_navigation_view"/>
    <!-- <android.support.design.widget.BottomNavigationView

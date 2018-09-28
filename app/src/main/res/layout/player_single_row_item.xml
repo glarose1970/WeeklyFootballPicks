@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Player Name"
-                android:textColor="@color/signIn_lightGreen"
+                android:textColor="@color/background_darkTan"
                 android:textStyle="italic"
                 android:textSize="18sp"
                 android:layout_margin="3dp"/>
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Company Name"
-                android:textColor="@color/signIn_lightGreen"
+                android:textColor="@color/background_darkTan"
                 android:textStyle="italic"
                 android:textSize="18sp"
                 android:layout_margin="3dp"/>
@@ -59,14 +59,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wins : "
-                android:textColor="@color/text_dark_tan"
+                android:textColor="@color/signIn_lightGreen"
                 android:layout_margin="4dp"/>
             <TextView
                 android:id="@+id/player_single_row_tvLosses"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Losses :"
-                android:textColor="@color/text_dark_tan"
+                android:textColor="@color/colorAccent"
                 android:layout_margin="4dp"/>
 
         </LinearLayout>
