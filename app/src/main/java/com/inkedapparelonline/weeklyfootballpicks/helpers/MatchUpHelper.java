@@ -13,6 +13,8 @@ import java.util.List;
 
 public class MatchUpHelper {
 
+    public static int matchupCount = 0;
+
     public static final List<MatchUp> Load_Matchups(String week) {
         List<MatchUp> matchupList = new ArrayList<>();
         try {
@@ -58,5 +60,26 @@ public class MatchUpHelper {
             e.printStackTrace();
         }
         return week;
+    }
+
+    public static int Get_Current_Matchup_Count() {
+        int matchupCount = 0;
+        try {
+            Document page = Jsoup.connect("http://www.nfl.com/scores/2018/REG").get();
+            Elements scoreBoxNodes = page.getElementsByClass("new-score-box");
+            matchupCount = scoreBoxNodes.size();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return matchupCount;
+    }
+
+    public int getMatchupCount() {
+        return matchupCount;
+    }
+
+    public void setMatchupCount(int matchupCount) {
+        this.matchupCount = matchupCount;
     }
 }

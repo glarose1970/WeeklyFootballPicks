@@ -79,6 +79,12 @@
                 android:hint="Email" />
 
             <EditText
+                android:id="@+id/newAcct_et_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Company" />
+
+            <EditText
                 android:id="@+id/newAcct_et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

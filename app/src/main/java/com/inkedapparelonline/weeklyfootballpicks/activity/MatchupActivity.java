@@ -102,7 +102,7 @@ public class MatchupActivity extends AppCompatActivity {
                     String homeTeamRecord = homeTeamNode.select(".team-record").text();
 
                     //Add matchup to matchup list
-                    mList.add(new MatchUp(new Team(awayTeamName, awayTeamRecord, awayTeamImgLocValue, awayTeamScore), new Team(homeTeamName, homeTeamRecord, homeTeamImgLocValue, homeTeamScore)));
+                    mList.add(new MatchUp(new Team(awayTeamName, awayTeamRecord, awayTeamImgLocValue, awayTeamScore, false, false), new Team(homeTeamName, homeTeamRecord, homeTeamImgLocValue, homeTeamScore, false, false)));
                     String test = "";
                 }
             } catch (IOException e) {

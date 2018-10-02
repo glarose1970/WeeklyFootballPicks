@@ -68,12 +68,16 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final List<Player> pList = new ArrayList<>();
                 for (DataSnapshot players : dataSnapshot.getChildren()) {
-                    String playerName = players.child("name").getValue().toString();
-                    String company = players.child("company").getValue().toString();
-                    String id = players.getKey();
-                    int wins = Integer.parseInt(players.child("winTotal").getValue().toString());
-                    int losses = Integer.parseInt(players.child("lossTotal").getValue().toString());
-                    pList.add(new Player(playerName, company, id, wins, losses));
+                    if (players.child("name").exists()) {
+                        String playerName = players.child("name").getValue().toString();
+                        String company = players.child("company").getValue().toString();
+                        String id = players.getKey();
+                        int wins = Integer.parseInt(players.child("winTotal").getValue().toString());
+                        int losses = Integer.parseInt(players.child("lossTotal").getValue().toString());
+                        pList.add(new Player(playerName, company, id, wins, losses));
+                    }else {
+
+                    }
 
                 }
                 mainRecView.setLayoutManager(new LinearLayoutManager(MainActivity.this));

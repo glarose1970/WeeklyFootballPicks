@@ -35,10 +35,12 @@
         android:gravity="right">
 
         <Button
-            android:text="Calculate"
+            android:id="@+id/player_picks_btn_save"
+            android:text="Save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <Button
+            android:id="@+id/player_picks_btn_cancel"
             android:text="Cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

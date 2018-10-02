@@ -7,13 +7,17 @@ public class Team {
     private String Record;
     private String ImgLocation;
     private String Score;
+    boolean isChecked;
+    boolean isEnabled;
 
     public Team() {
     }
 
-    public Team(String name, String imgLocation) {
+    public Team(String name, String imgLocation, boolean is_checked, boolean is_enabled) {
         Name = name;
         ImgLocation = imgLocation;
+        isChecked = is_checked;
+        isEnabled = is_enabled;
     }
 
     public Team(String name, String record, String score) {
@@ -22,11 +26,13 @@ public class Team {
         Score = score;
     }
 
-    public Team(String name, String record, String imgLocation, String score) {
+    public Team(String name, String record, String imgLocation, String score, boolean is_checked, boolean is_enabled) {
         Name = name;
         Record = record;
         ImgLocation = imgLocation;
         Score = score;
+        isChecked = is_checked;
+        isEnabled = is_enabled;
     }
 
     public Team(String name, String abr, String record, String imgLocation, String score) {
@@ -35,6 +41,22 @@ public class Team {
         Record = record;
         ImgLocation = imgLocation;
         Score = score;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 
     public String getScore() {

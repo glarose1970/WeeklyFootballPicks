@@ -24,15 +24,20 @@ public class Player {
         Company = company;
     }
 
+    public Player(String name, List<Team> picks) {
+        Name = name;
+        Picks = picks;
+    }
+
     public Player(String name, String company, String id) {
         Name = name;
         Company = company;
         Id = id;
     }
 
-    public Player(String name, String company, List<Team> picks) {
+    public Player(String name, String id, List<Team> picks) {
         Name = name;
-        Company = company;
+        Id = id;
         Picks = picks;
     }
 

@@ -14,17 +14,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.inkedapparelonline.weeklyfootballpicks.R;
 
 public class NewAcctActivity extends Activity {
 
-    EditText et_email;
-    EditText et_password;
-    Button btn_create;
-    Button btn_cancel;
+    EditText et_email, et_company, et_password;
+    Button btn_create, btn_cancel;
 
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mDataRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +34,12 @@ public class NewAcctActivity extends Activity {
         setContentView(R.layout.activity_new_acct);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance();
+        mDataRef = mDatabase.getReference("players");
 
         et_email    = findViewById(R.id.newAcct_et_email);
         et_password = findViewById(R.id.newAcct_et_password);
+        et_company  = findViewById(R.id.newAcct_et_company);
         btn_cancel  = findViewById(R.id.newAcct_btn_cancel);
         btn_create  = findViewById(R.id.newAcct_btn_createAcct);
 
@@ -56,7 +61,7 @@ public class NewAcctActivity extends Activity {
             @Override
             public void onClick(View v) {
                 if (isValid(et_email, et_password)) {
-                    createUserAccount(et_email.getText().toString(), et_password.getText().toString());
+                    createUserAccount(et_email.getText().toString(), et_company.getText().toString(), et_password.getText().toString());
                 }else {
                     Toast.makeText(NewAcctActivity.this, "All fields required", Toast.LENGTH_LONG).show();
                 }
@@ -72,7 +77,7 @@ public class NewAcctActivity extends Activity {
 
     }
 
-    private void createUserAccount(String email, String password) {
+    private void createUserAccount(final String email, final String company, String password) {
         if (currentUser != null) {
 
         }else {
@@ -81,6 +86,12 @@ public class NewAcctActivity extends Activity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                String userID = mAuth.getCurrentUser().getUid().toString();
+                                mDataRef.child(userID).child("name").setValue(email.toString());
+                                mDataRef.child(userID).child("id").setValue(userID);
+                                mDataRef.child(userID).child("company").setValue(company);
+                                mDataRef.child(userID).child("winTotal").setValue("0");
+                                mDataRef.child(userID).child("lossTotal").setValue("0");
                                 Intent intent = new Intent(NewAcctActivity.this, LoginActivity.class);
                                 startActivity(intent);
                             }else {

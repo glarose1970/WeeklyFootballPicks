@@ -10,12 +10,20 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.inkedapparelonline.weeklyfootballpicks.R;
 import com.inkedapparelonline.weeklyfootballpicks.activity.Player_Picks_Activity;
+import com.inkedapparelonline.weeklyfootballpicks.controller.PlayerPicksController;
+import com.inkedapparelonline.weeklyfootballpicks.helpers.MatchUpHelper;
 import com.inkedapparelonline.weeklyfootballpicks.model.MatchUp;
+import com.inkedapparelonline.weeklyfootballpicks.model.Team;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerPicksRecViewAdapter extends RecyclerView.Adapter<PlayerPicksRecViewAdapter.ViewHolder> {
@@ -23,11 +31,19 @@ public class PlayerPicksRecViewAdapter extends RecyclerView.Adapter<PlayerPicksR
     Context context;
     List<MatchUp> matchupList;
     Player_Picks_Activity.Load_Matchup_Picks matchupPicks;
+    List<Team> playerPicksList;
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    FirebaseDatabase mDataBase = FirebaseDatabase.getInstance();
+    DatabaseReference mDataRef = mDataBase.getReference("players");
+
+    private int count = 0;
+    private int matchupCount = MatchUpHelper.matchupCount;
 
     public PlayerPicksRecViewAdapter(Context context, List<MatchUp> matchupList, Player_Picks_Activity.Load_Matchup_Picks matchupPicks) {
         this.context = context;
         this.matchupList = matchupList;
         this.matchupPicks = matchupPicks;
+        playerPicksList = new ArrayList<>();
     }
 
     @NonNull
@@ -38,14 +54,56 @@ public class PlayerPicksRecViewAdapter extends RecyclerView.Adapter<PlayerPicksR
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PlayerPicksRecViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PlayerPicksRecViewAdapter.ViewHolder holder, final int position) {
 
+        final Team awayTeam = matchupList.get(position).getAwayTeam();
+        final Team homeTeam = matchupList.get(position).getHomeTeam();
         Picasso.get().load(matchupList.get(position).getAwayTeam().getImgLocation()).into(holder.iv_awayTeamLogo);
         Picasso.get().load(matchupList.get(position).getHomeTeam().getImgLocation()).into(holder.iv_homeTeamLogo);
         holder.tv_awayTeamName.setText(matchupList.get(position).getAwayTeam().getName());
         holder.tv_homeTeamName.setText(matchupList.get(position).getHomeTeam().getName());
 
+        holder.checkBox_awayTeam.setOnCheckedChangeListener(null);
+        holder.checkBox_homeTeam.setOnCheckedChangeListener(null);
 
+        holder.checkBox_awayTeam.setChecked(awayTeam.isChecked());
+        holder.checkBox_homeTeam.setChecked(homeTeam.isChecked());
+
+        holder.checkBox_awayTeam.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (count < matchupCount) {
+                    awayTeam.setChecked(isChecked);
+                    playerPicksList.add(new Team(matchupList.get(position).getAwayTeam().getName(), matchupList.get(position).getAwayTeam().getRecord(),
+                            matchupList.get(position).getAwayTeam().getImgLocation(), matchupList.get(position).getAwayTeam().getScore(), true, true));
+                    Toast.makeText(context, matchupList.get(position).getAwayTeam().getName(), Toast.LENGTH_SHORT).show();
+                    count++;
+                }else {
+                    Toast.makeText(context, "Pick count reached!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+            }
+        });
+
+        holder.checkBox_homeTeam.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (count < matchupCount) {
+                    homeTeam.setChecked(isChecked);
+                    Toast.makeText(context, matchupList.get(position).getHomeTeam().getName(), Toast.LENGTH_SHORT).show();
+                    playerPicksList.add(new Team(matchupList.get(position).getHomeTeam().getName(), matchupList.get(position).getHomeTeam().getRecord(),
+                            matchupList.get(position).getHomeTeam().getImgLocation(), matchupList.get(position).getHomeTeam().getScore(), true, true));
+                    count++;
+                }else {
+                    Toast.makeText(context, "Pick count reached!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+            }
+        });
     }
 
     @Override
